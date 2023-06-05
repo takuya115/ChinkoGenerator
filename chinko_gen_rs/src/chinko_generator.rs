@@ -1,9 +1,9 @@
 use rand::Rng;
 
 pub struct ChinkoGenerator {
-    is_chinko: [i32; 3],
+    is_chinko: [u8; 3],
     chinko_dict: [&'static str; 3],
-    chinko_list: Vec<i32>,
+    chinko_list: Vec<u8>,
 }
 
 impl ChinkoGenerator {
@@ -17,7 +17,7 @@ impl ChinkoGenerator {
 
     pub fn gen_triplet(&mut self) -> bool {
         let mut rng = rand::thread_rng();
-        let triplet: Vec<i32> = (0..3).map(|_| rng.gen_range(0..=2)).collect();
+        let triplet: Vec<u8> = (0..3).map(|_| rng.gen_range(0..=2)).collect();
         self.chinko_list.extend_from_slice(&triplet);
         triplet == self.is_chinko
     }
